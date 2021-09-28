@@ -12,12 +12,17 @@ app.use(express.json());
 //pasa contenido del tipo x-www-form-urlencoded de un  tamaño mayor al por defecto
 app.use(express.urlencoded({ extended: true }));
 
+//importar rutas
+const routes = require('./router');
+
+//denominar la ruta
+app.use('/api/', routes);
+//kaka
 //error 500 handler
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
     console.error(err.message, err.stack);
     res.status(statusCode).json({'message': err.message});
-  
     return;
 });
 
@@ -26,11 +31,6 @@ app.use( (req, res, next) => {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
-});
-
-//ruta de ejemplo
-app.get("/", (req, res) => {
-    res.json({ message: "prueba proyecto tarea 1 arqui" });
 });
 
 //la app empieza a escuchar en el puerto declarado antes
