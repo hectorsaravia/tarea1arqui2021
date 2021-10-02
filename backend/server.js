@@ -17,7 +17,7 @@ const routes = require('./router');
 
 //denominar la ruta
 app.use('/api/', routes);
-//kaka
+
 //error 500 handler
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
