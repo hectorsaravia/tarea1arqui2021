@@ -5,13 +5,15 @@ services:
     container_name: database-postgres
     image: postgres
     volumes:
-      - ./data/db:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql/data
+      # copy the sql script to create tables
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
     environment:
-      - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
     ports:
-      - 5432:5432
+      - "5432:5432"
 
   backend:
     container_name: backend

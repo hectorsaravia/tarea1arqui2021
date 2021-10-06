@@ -7,7 +7,7 @@ function test (result) {
             done();
             result(err);
         } else {
-            client.query(`SELECT * FROM users;`, function(err,results) {
+            client.query(`SELECT * FROM Users;`, function(err,results) {
                 done();
                 if (err)
                     result(err);
@@ -25,8 +25,8 @@ function login (data,result) {
             done();
             result(err);
         } else {
-            client.query(`SELECT * FROM users WHERE email=$1 AND password=$2 LIMIT 1;`, 
-            [data.email, data.password], function(err,results) {
+            client.query(`SELECT * FROM Usuarios WHERE nombre=$1 AND contrasena=$2;`, 
+            [data.name, data.password], function(err,results) {
                 done();
                 if (err)
                     result(err);
@@ -44,8 +44,8 @@ function register (data,result) {
             done();
             result(err);
         } else {
-            client.query(`INSERT INTO users(email, name, lastname, password) VALUES ($1,$2,$3,$4);`,
-            [data.email, data.name, data.lastname, data.password],
+            client.query(`INSERT INTO Usuarios(nombre,contrasena) VALUES ($1,$2);`,
+            [data.name, data.password],
             function(err,results) {
                 done();
                 if (err)

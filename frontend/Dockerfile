@@ -1,15 +1,19 @@
 # Compilación
-FROM node:14
+FROM node:14-alpine
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY package*.json ./
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+COPY package.json /usr/src/app/package.json
 
 RUN npm install
+
+RUN npm install -g @vue/cli
 
 COPY . .
 
 RUN npm run build
 
 EXPOSE 8080
-RUN npm run serve
+CMD ["npm", "run", "serve"]
