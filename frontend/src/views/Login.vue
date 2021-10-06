@@ -9,7 +9,7 @@
                     <form class="form-group">
                       <input v-model="nombreLogin" type="text" class="form-control" placeholder="Nombre" required>
                       <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
-                      <input type="submit" class="btn btn-primary" @click="doLogin">
+                      <button type="submit" class="btn btn-primary" @click="doLogin()">Ingresar</button><br>
                       <p>No tienes una cuenta? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Registrate</a>
                       </p>
                       <p></p>
@@ -22,7 +22,7 @@
                       <input v-model="nombreReg" type="nombre" class="form-control" placeholder="Nombre" required>
                       <input v-model="passwordReg" type="password" class="form-control" placeholder="Password" required>
                       <input v-model="confirmReg" type="password" class="form-control" placeholder="Confirm Password" required>
-                      <input type="submit" class="btn btn-primary" @click="doRegister">
+                      <button type="submit" class="btn btn-primary" @click="doRegister()">Registrar</button><br>
                       <p>Ya tienes una cuenta? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Ingresa</a>
                       </p>
                     </form>
@@ -52,10 +52,7 @@ export default {
    
    methods: {
       async doLogin() {
-        if (this.emailLogin === "" || this.passwordLogin === "") {
-            this.emptyFields = true;
-        }
-        const Data = await fetch('http://localhost:8080/api/login',{
+        const Data = await fetch('http://localhost:8081/api/login',{
             method: 'POST',
             headers: {
                 'Accept' : 'application/json',
@@ -76,10 +73,7 @@ export default {
       },
       
       async doRegister() {
-        if (this.emailReg === "" || this.passwordReg === "" || this.confirmReg === "") {
-            this.emptyFields = true;
-        }
-        const Data = await fetch('http://localhost:8080/api/registro',{
+        const Data = await fetch('http://localhost:8081/api/registro',{
             method: 'POST',
             headers: {
                 'Accept' : 'application/json',
