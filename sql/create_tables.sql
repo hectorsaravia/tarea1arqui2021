@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS Comida (
     PRIMARY KEY (nombre)
 );
 CREATE TABLE IF NOT EXISTS Resenas (
-    id INT NOT NULL,
-    votacion FLOAT NOT NULL,
+    id serial NOT NULL,
+    votacion INT NOT NULL,
     descripcion TEXT NOT NULL,
     nombre_usuario varchar(250) NOT NULL,
     nombre_comida varchar(250) NOT NULL,

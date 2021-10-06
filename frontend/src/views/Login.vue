@@ -53,22 +53,24 @@ export default {
    methods: {
       async doLogin() {
         const Data = await fetch('http://localhost:8081/api/login',{
-            method: 'POST',
-            headers: {
-                'Accept' : 'application/json',
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify({
-                name:this.nombreLogin,
-                password:this.passwordLogin
-                })
+          method: 'POST',
+          headers: {
+            'Accept' : 'application/json',
+            'Content-Type' : 'application/json'
+          },
+          body: JSON.stringify({
+            name:this.nombreLogin,
+            password:this.passwordLogin
+            })
         });
         const data=await Data.json();
         if(data.message != false){
-            this.$router.push("/main");
+          alert('bien mi rei');
+          this.$router.push("/main");
         }
         else{
-            this.emptyFields = true;
+          alert(data.message);
+          this.emptyFields = true;
         }
       },
       
@@ -85,8 +87,9 @@ export default {
             })
         });
         const data = await Data.json();
+        alert(data.message);
         if(data.message){
-            this.$router.push("/main");
+            this.$router.go();
         }
         else{
             this.emptyFields = true;
