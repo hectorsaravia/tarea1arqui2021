@@ -2,7 +2,7 @@
   <div class="login-page">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-8 mx-auto " style="border-style: solid; border-width: medium; border-radius: 5px; border-color: grey;">
+        <div class="col-lg-4 col-md-6 col-sm-8 mx-auto " style="border-style: solid; border-width: medium; border-radius: 10px; border-color: white;">
           <br>
           <h1>Regístrate</h1>
           <form class="form-group">
