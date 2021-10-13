@@ -1,7 +1,12 @@
 <template>
   <div id="app">
-    <router-link to="/">Login</router-link>
-    <router-link to="/Registro">Registro</router-link>
+    <div v-if="!this.$session.exists()">
+      <router-link to="/">Ingresar</router-link> | 
+      <router-link to="/Registro">Registrarse</router-link>
+    </div>
+    <div v-else>
+      <router-link to="/logout"></router-link>
+    </div>
     <router-view></router-view>
   </div>
 </template>
