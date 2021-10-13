@@ -7,9 +7,9 @@ import VueSession from 'vue-session'
 import '@/assets/css/main.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-Vue.use(VueSession)
+Vue.use(VueSession, {persist: true});
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 Vue.prototype.$axios = axios;
 axios.defaults.withCredentials = true;
