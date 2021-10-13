@@ -2,7 +2,7 @@
   <div id="app">
     <div v-if="!this.$session.exists()">
       <router-link to="/">Ingresar</router-link> | 
-      <router-link to="/Registro">Registrarse</router-link>
+      <router-link to="/Registro" >Registrarse</router-link>
     </div>
     <div v-else>
       <router-link to="/logout"></router-link>
@@ -20,6 +20,7 @@ export default {}
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  font-size: 150%;
 }
 
 </style>
