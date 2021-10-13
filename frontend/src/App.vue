@@ -1,13 +1,15 @@
 <template>
-  <div id="app">
-    <div v-if="!this.$session.exists()">
+  <div>
+    <div id="navbar" v-if="!this.$session.exists()">
       <router-link to="/">Ingresar</router-link> | 
       <router-link to="/Registro" >Registrarse</router-link>
     </div>
-    <div v-else>
+    <div id="navbar" v-else>
       <router-link to="/logout"></router-link>
     </div>
-    <router-view></router-view>
+    <div id="app">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 <script>
@@ -19,8 +21,15 @@ export default {}
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #ffffff;
   font-size: 150%;
+  background-image: url("./assets/html-color-codes-color-tutorials-hero.jpg");
+}
+
+#navbar {
+  background-color: white; 
+  font-size: 200%;
+  color: black
 }
 
 </style>
