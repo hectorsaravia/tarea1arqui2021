@@ -8,7 +8,7 @@
           <form class="form-group">
             <input v-model="nombreLogin" type="text" class="form-control" placeholder="Nombre" required>
             <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
-            <button type="button" class="btn btn-primary" @click="doLogin()">Ingresar</button><br>
+            <button type="button" class="btn btn-default" @click="doLogin()">Ingresar</button><br>
           </form>
         </div>
       </div>

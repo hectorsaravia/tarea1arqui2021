@@ -9,7 +9,7 @@
             <input v-model="nombreReg" type="nombre" class="form-control" placeholder="Nombre" required>
             <input v-model="passwordReg" type="password" class="form-control" placeholder="Contraseña" required>
             <input v-model="confirmReg" type="password" class="form-control" placeholder="Confirmar contraseña" required>
-            <button type="button" class="btn btn-primary" @click="doRegister()">Registrar</button><br>
+            <button type="button" class="btn btn-danger" @click="doRegister()">Registrar</button><br>
           </form>
         </div>
       </div>

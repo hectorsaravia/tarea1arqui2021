@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div id="navbar" v-if="!this.$session.exists()">
-      <router-link to="/">Ingresar</router-link> | 
-      <router-link to="/Registro" >Registrarse</router-link>
+    <div id="navbar" v-if="!this.$session.exists()" class="btn-group btn-group-justified">
+      <router-link to="/" class="btn btn-default">Ingresar</router-link>
+      <router-link to="/Registro" class="btn btn-default">Registrarse</router-link>
     </div>
     <div id="navbar" v-else>
       <router-link to="/logout"></router-link>
