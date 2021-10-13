@@ -7,16 +7,8 @@ import Registro from '../views/Registro.vue';
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: '/',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/registro',
-    name: 'Registro',
-    component: Registro
-  }
+  {path: '/', component: Login},
+  {path: '/registro', component: Registro}
 ]
 
 const router = new VueRouter({

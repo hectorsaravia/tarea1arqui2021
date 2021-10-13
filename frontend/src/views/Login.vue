@@ -1,20 +1,18 @@
 <template>
-  <div id="app">
-    <div class="login-page">
-        <div class="container">
-          <div class="row">
-              <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
-                <h1>Ingresa</h1>
-                <form class="form-group">
-                  <input v-model="nombreLogin" type="text" class="form-control" placeholder="Nombre" required>
-                  <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
-                  <button type="submit" class="btn btn-primary" @click="doLogin()">Ingresar</button><br>
-                </form>
-              </div>
-          </div>
+  <div class="login-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
+          <h1>Ingresa</h1>
+          <form class="form-group">
+            <input v-model="nombreLogin" type="text" class="form-control" placeholder="Nombre" required>
+            <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
+            <button type="button" class="btn btn-primary" @click="doLogin()">Ingresar</button><br>
+          </form>
         </div>
+      </div>
+    </div>
    </div>
-  </div>
 </template>
 
 <script>
