@@ -3,8 +3,11 @@ import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueSession from 'vue-session'
 import '@/assets/css/main.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
+Vue.use(VueSession)
 
 Vue.config.productionTip = false
 
