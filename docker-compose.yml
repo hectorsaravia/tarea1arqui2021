@@ -5,7 +5,7 @@ services:
     container_name: database-postgres
     image: postgres
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - ./psqldata:/var/lib/postgres/data
       # copy the sql script to create tables
       - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
 
