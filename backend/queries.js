@@ -150,10 +150,88 @@ function new_comida (data,result) {
                     result(err);
                 else
                     result(results);
-            })
-        }
-    })
-}
+            });
+        };
+    });
+};
+
+
+//función para actualizar reseñas
+function update_resena(data,result) {
+    pool.connect(function(err, client, done) {
+        if (err) {
+            done();
+            result(err);
+        } else {
+            client.query(`UPDATE Resenas SET votacion=$1 AND descripcion=$2 WHERE id=$3;`,
+            [data.id], function (err,results) {
+                done();
+                if (err)
+                    result(err);
+                else
+                    result(results);
+            });
+        };
+    });
+};
+
+//función para actualizar comida
+function update_comida(data,result) {
+    pool.connect(function(err, client, done) {
+        if (err) {
+            done();
+            result(err);            
+        } else {
+            client.query(`UPDATE Comida SET nombre=$1 AND descripcion=$2 AND rutaImagen=$3`,
+            [data.nombre, data.descripcion, data.rutaImagen] ,
+            function(err,results) {
+                done();
+                if (err)
+                    result(err);
+                else
+                    result(results);
+            });
+        };
+    });
+};
+
+//función para eliminar comida
+function delete_comida(data,result) {
+    pool.connect(function(err, client, done) {
+        if (err) {
+            done();
+            result(err);            
+        } else {
+            client.query(`DELETE FROM Comida WHERE nombre=$1;`, [data.nombre_comida], 
+            function(err,results) {
+                done();
+                if (err)
+                    result(err);
+                else
+                    result(results);
+            });
+        };
+    });
+};
+
+//función para eliminar resenas
+function delete_resena(data,result) {
+    pool.connect(function(err, client, done) {
+        if (err) {
+            done();
+            result(err);            
+        } else {
+            client.query(`DELETE FROM Resenas WHERE id=$1;`, [data.id], 
+            function(err,results) {
+                done();
+                if (err)
+                    result(err);
+                else
+                    result(results);
+            });
+        };
+    });
+};
 
 module.exports = {
     test,
@@ -163,5 +241,9 @@ module.exports = {
     get_resenas,
     get_promedio_resenas,
     get_nombre_comidas,
-    new_comida
+    new_comida,
+    update_resena,
+    update_comida,
+    delete_resena,
+    delete_comida
 };
