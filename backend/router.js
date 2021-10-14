@@ -11,6 +11,8 @@ const {
     get_promedio_resenas,
     get_nombre_comidas,
     new_comida,
+    update_resena,
+    update_comida,
     delete_resena,
     delete_comida
 } = require('./queries');
@@ -111,8 +113,32 @@ router.post("/new_comida", (req, res) => {
     });
 });
 
+//ruta para actualizar una comida
+router.put("/update_comida", (req, res) => {
+    const data = req.body;
+    update_comida(data, function(result) {
+        if (result.rowCount > 0) {
+            res.json({message: true});
+        } else {
+            res.json({message: false});
+        };
+    });
+});
+
+//ruta para actualizar una resena
+router.put("/update_comida", (req, res) => {
+    const data = req.body;
+    update_resena(data, function(result) {
+        if (result.rowCount > 0) {
+            res.json({message: true});
+        } else {
+            res.json({message: false});
+        };
+    });
+});
+
 //ruta para ingresar una nueva comida
-router.post("/delete_comida", (req, res) => {
+router.delete("/delete_comida", (req, res) => {
     const data = req.body;
     delete_resena(data, function(result) {
         if (result.rowCount > 0) {
@@ -124,7 +150,7 @@ router.post("/delete_comida", (req, res) => {
 });
 
 //ruta para ingresar una nueva comida
-router.post("/delete_resena", (req, res) => {
+router.delete("/delete_resena", (req, res) => {
     const data = req.body;
     delete_comida(data, function(result) {
         if (result.rowCount > 0) {
