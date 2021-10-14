@@ -1,7 +1,7 @@
 <template>
   <div>
     <Comidas v-bind:nombre_comida="this.$route.params.nombre" v-bind:desc_comida="this.descripcion"/>
-    <Resenas v-for="r in values" v-bind:key="r" v-bind:nombre_comida="r.nombre_comida" v-bind:votacion_res="r.votacion" v-bind:desc_res="r.desc_res" v-bind:nombre_usuario="nombre_usuario"/>
+    <Resenas v-for="r in values" v-bind:key="r" v-bind:id="r.id" v-bind:nombre_comida="r.nombre_comida" v-bind:votacion_res="r.votacion" v-bind:desc_res="r.descripcion" v-bind:nombre_usuario="r.nombre_usuario"/>
     <HacerResena v-bind:nombre_comida="this.$route.params.nombre"/>
   </div>
 </template>
