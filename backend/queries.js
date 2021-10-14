@@ -1,3 +1,4 @@
+const { ClientBase } = require('pg');
 const pool = require('./database');
 
 //funcion pa probar cosas locas
@@ -57,6 +58,7 @@ function register (data,result) {
     });
 };
 
+//función para insertar nuevas reseñas
 function new_resena (data,result) {
     pool.connect(function(err, client, done) {
         if (err) {
@@ -77,13 +79,14 @@ function new_resena (data,result) {
     });
 };
 
+//función para obtener todas las reseñas de una comida exacta
 function get_resenas (data,result) {
     pool.connect(function(err, client, done) {
         if (err) {
             done();
             result(err);
         } else {
-            client.query(`SELECT AVG(votacion) FROM Resenas WHERE nombre_comida=$1`, [data.nombre_comida],
+            client.query(`SELECT * FROM Resenas WHERE nombre_comida=$1;`, [data.nombre_comida],
             function(err, results) {
                 done();
                 if (err)
@@ -95,10 +98,70 @@ function get_resenas (data,result) {
     });
 };
 
+//función para obtener el promedio de todas las reseñas
+function get_promedio_resenas (data,result) {
+    pool.connect(function(err, client, done) {
+        if (err) {
+            done();
+            result(err);
+        } else {
+            client.query(`SELECT AVG(votacion) FROM Resenas WHERE nombre_comida=$1;`, [data.nombre_comida],
+            function(err, results) {
+                done();
+                if (err)
+                    result(err);
+                else
+                    result(results);
+            });
+        };
+    });
+};
+
+//funcion para obtener el nombre de todas las comidas de la base
+function get_nombre_comidas (result) {
+    pool.connect(function(err, client, done) {
+        if (err) {
+            done();
+            result(err);
+        } else {
+            client.query(`SELECT nombre FROM Comida;`, function(err, results) {
+                done();
+                if (err)
+                    result(err);
+                else
+                    result(results);
+            });
+        };
+    });
+};
+
+//función para insertar una nueva comida
+function new_comida (data,result) {
+    pool.connect(function(err, client, done) {
+        if (err) {
+            done();
+            result(err);
+        } else {
+            client.query(`INSERT INTO Comida(nombre,descripcion,rutaImagen) VALUES($1,$2,$3);`,
+            [data.nombre,data.descripcion,data.rutaImagen],
+            function(err, results) {
+                done();
+                if (err)
+                    result(err);
+                else
+                    result(results);
+            })
+        }
+    })
+}
+
 module.exports = {
     test,
     login,
     register,
     new_resena,
     get_resenas,
+    get_promedio_resenas,
+    get_nombre_comidas,
+    new_comida
 };

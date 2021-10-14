@@ -7,7 +7,10 @@ const {
     login,
     register,
     new_resena,
-    get_resenas
+    get_resenas,
+    get_promedio_resenas,
+    get_nombre_comidas,
+    new_comida
 } = require('./queries');
 
 //ruta de ejemplo
@@ -61,11 +64,47 @@ router.post("/get_resenas", (req, res) => {
     const data = req.body;
     get_resenas(data, function (result) {
         if (result.rowCount > 0) {
-            res.json({message: result.rows[0]});
+            res.json({message: result.rows});
         } else {
-            res.json({message: result});
+            res.json({message: false});
             console.log(result.detail);
         }
+    });
+});
+
+//ruta para obtener el promedio de las resenas
+router.post("/get_promedio_resenas", (req, res) => {
+    const data = req.body;
+    get_promedio_resenas(data, function (result) {
+        if (result.rowCount > 0) {
+            res.json({message: result.rows[0]});
+        } else {
+            res.json({message: false});
+            console.log(result.detail);
+        };
+    });
+});
+
+//ruta para obtener todos los nombres de las resenas
+router.get("/get_nombre_comidas", (req, res) => {
+    get_nombre_comidas(function (result) {
+        if (result.rowCount > 0) {
+            res.json({message: result.rows});
+        } else {
+            res.json({message: false});
+            console.log(result.detail);
+        };
+    });
+});
+
+//ruta para ingresar una nueva comida
+router.post("/new_comida", (req, res) => {
+    new_comida(data, function(result) {
+        if (result.rowCount > 0) {
+            res.json({message: true});
+        } else {
+            res.json({message: false});
+        };
     });
 });
 

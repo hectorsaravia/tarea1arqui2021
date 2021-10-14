@@ -1,15 +1,25 @@
 <template>
   <div>
-    <div id="navbar" v-if="!this.$session.exists()" class="btn-group btn-group-justified">
-      <router-link to="/" class="btn btn-default">Ingresar</router-link>
-      <router-link to="/Registro" class="btn btn-default">Registrarse</router-link>
+    <div id="navbar">
+      <img src="../public/favicon.png" style="height: 50px">
+      <div v-if="!this.$session.exists()" class="btn-group btn-gr oup-justified">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">Food-ó-metro: página oficial de reviews</button>
+        </div>
+        <div class="btn-group">
+          <button @click="goLogin()" type="button" class="btn btn-default">Ingresar</button>
+        </div>
+        <div class="btn-group">
+          <button @click="goRegistro()" type="button" class="btn btn-default">Registrarse</button>
+        </div>
+      </div>
+      <div v-else>
+        <button class="btn btn-default" @click="doLogoff()">Cerrar sesión</button>
     </div>
-    <div id="navbar" v-else>
-      <button class="btn btn-default" @click="doLogoff()">Cerrar sesión</button>
     </div>
     <div id="app">
-      <router-view></router-view>
-    </div>
+        <router-view></router-view>
+      </div>
   </div>
 </template>
 <script>
@@ -18,6 +28,12 @@ export default {
     async doLogoff() {
       this.$session.destroy();
       this.$router.push({path: "/"});
+    },
+    async goLogin() {
+      this.$router.push({path: "/"});
+    },
+    async goRegistro() {
+      this.$router.push({path: "/Registro"});
     }
   }
 }
@@ -31,12 +47,17 @@ export default {
   color: #ffffff;
   font-size: 150%;
   background-image: url("./assets/html-color-codes-color-tutorials-hero.jpg");
+  border-style: solid; 
+  border-width: medium; 
+  border-radius: 10px; 
+  border-color: white;
 }
 
 #navbar {
   background-color: white; 
   font-size: 200%;
-  color: black
+  color: black;
+  text-align: center;
 }
 
 </style>
