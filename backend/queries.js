@@ -135,6 +135,25 @@ function get_nombre_comidas (result) {
     });
 };
 
+//funcion para obtener una comida en especifico
+function get_comida_detalle (data,result) {
+    pool.connect(function(err, client, done) {
+        if (err) {
+            done();
+            result(err);
+        } else {
+            client.query(`SELECT * FROM Comida WHERE nombre=$1;`, [data.nombre_comida],
+            function(err, results) {
+                done();
+                if (err)
+                    result(err);
+                else
+                    result(results);
+            });
+        };
+    });
+}
+
 //función para insertar una nueva comida
 function new_comida (data,result) {
     pool.connect(function(err, client, done) {
@@ -241,6 +260,7 @@ module.exports = {
     get_resenas,
     get_promedio_resenas,
     get_nombre_comidas,
+    get_comida_detalle,
     new_comida,
     update_resena,
     update_comida,
