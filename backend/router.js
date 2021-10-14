@@ -126,7 +126,7 @@ router.put("/update_comida", (req, res) => {
 });
 
 //ruta para actualizar una resena
-router.put("/update_comida", (req, res) => {
+router.put("/update_resena", (req, res) => {
     const data = req.body;
     update_resena(data, function(result) {
         if (result.rowCount > 0) {
