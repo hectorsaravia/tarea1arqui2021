@@ -101,6 +101,7 @@ router.get("/get_nombre_comidas", (req, res) => {
 
 //ruta para ingresar una nueva comida
 router.post("/new_comida", (req, res) => {
+    const data = req.body;
     new_comida(data, function(result) {
         if (result.rowCount > 0) {
             res.json({message: true});
@@ -112,6 +113,7 @@ router.post("/new_comida", (req, res) => {
 
 //ruta para ingresar una nueva comida
 router.post("/delete_comida", (req, res) => {
+    const data = req.body;
     delete_resena(data, function(result) {
         if (result.rowCount > 0) {
             res.json({message: true});
@@ -123,6 +125,7 @@ router.post("/delete_comida", (req, res) => {
 
 //ruta para ingresar una nueva comida
 router.post("/delete_resena", (req, res) => {
+    const data = req.body;
     delete_comida(data, function(result) {
         if (result.rowCount > 0) {
             res.json({message: true});
