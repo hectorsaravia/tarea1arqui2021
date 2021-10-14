@@ -1,15 +1,43 @@
 <template>
-  <h1>oal</h1>
+  <div>
+    <Comidas v-for="c in values" v-bind:key="c" v-bind:nombre_comida="c.nombre_comida" >
+      <Resenas v-bind:nombre_comida="c.nombre_comida"/>
+    </Comidas>
+  </div>
 </template>
 
 <script>
+import Comidas from '../components/Comidas.vue'
+import Resenas from '../components/Resenas.vue'
 export default {
     name: 'Dashboard',
-    data () {
-        return {
+    data() {
+          return {
+            values:[]
+          };
+        },
+        components: {
+          Resenas,
+          Comidas
+        },
+        methods: {
+            getComidas(){
+              this.$axios.get('http://localhost:8081/api/get_comidas')
+              .then(response => {
+                if(!response.data.message) {
+                  alert("La base de datos no contiene comidas");
+                } else {
+                  this.values=data.message
+                }
+              }).catch(error => alert(error));
+            },
+        },
+        computed: {
 
+        },
+        created(){
+          this.getComidas();
         }
-    },
 }
 </script>
 
