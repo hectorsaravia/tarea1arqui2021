@@ -10,6 +10,7 @@ const {
     get_resenas,
     get_promedio_resenas,
     get_nombre_comidas,
+    get_comida_detalle,
     new_comida,
     update_resena,
     update_comida,
@@ -100,6 +101,19 @@ router.get("/get_comidas", (req, res) => {
         };
     });
 });
+
+//ruta para obtener todos los valores de Comida
+router.post("/get_comida_detalle", (req, res) => {
+    get_comida_detalle(data, function (result) {
+        if (result.rowCount > 0) {
+            res.json({message: result.rows});
+        } else {
+            res.json({message: false});
+            console.log(result.detail);
+        };
+    });
+});
+
 
 //ruta para ingresar una nueva comida
 router.post("/new_comida", (req, res) => {
