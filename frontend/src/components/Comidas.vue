@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div>
     <h5 class="card-header">{{nombre_comida}}</h5>
     <div class="card-body">
       <p class="card-text">{{desc_comida}}</p>
