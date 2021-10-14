@@ -137,6 +137,7 @@ function get_nombre_comidas (result) {
 
 //funcion para obtener una comida en especifico
 function get_comida_detalle (data,result) {
+    console.log(data);
     pool.connect(function(err, client, done) {
         if (err) {
             done();
