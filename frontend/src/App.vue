@@ -1,7 +1,8 @@
 <template>
   <div>
     <ul id="navbar">
-      <li><a >Food-ó-metro: página oficial de reviews</a></li>
+      <li><a><img src="../public/favicon.png" style="height: 20px"></a></li>
+      <li><a @click="goDashboard()">Food-ó-metro: página oficial de reviews</a></li>
       <li style="float: right" v-if="!this.$session.exists()"><a @click="goLogin()">Ingresar</a></li>
       <li style="float: right" v-if="!this.$session.exists()"><a @click="goRegistro()">Registrarse</a></li>
       <li style="float: right" v-if="this.$session.exists()"><a @click="doLogoff()">Cerrar sesión</a></li>
@@ -23,6 +24,9 @@ export default {
     },
     async goRegistro() {
       this.$router.push({path: "/Registro"});
+    },
+    async goDashboard() {
+      this.$router.push({path: "/dashboard"})
     }
   }
 }
@@ -34,7 +38,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #ffffff;
-  background-image: url("./assets/html-color-codes-color-tutorials-hero.jpg");
   border-color: white;
 }
 
@@ -72,6 +75,12 @@ li a:hover:not(.active) {
 
 .active {
   background-color: #04AA6D;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background-image: url("./assets/html-color-codes-color-tutorials-hero.jpg");
 }
 
 </style>
