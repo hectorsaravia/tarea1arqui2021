@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Usuarios (
 CREATE TABLE IF NOT EXISTS Comida (
     nombre varchar(250) NOT NULL,
     descripcion TEXT NOT NULL,
-    rutaImagen varchar(250) NOT NULL,
+    rutaImagen varchar(250),
     PRIMARY KEY (nombre)
 );
 CREATE TABLE IF NOT EXISTS Resenas (
