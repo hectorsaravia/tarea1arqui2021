@@ -30,7 +30,7 @@ export default {
   beforeCreate () {
     if (this.$session.exists()) {
       this.$router.push({path: "/Dashboard"});
-    }
+    };
   },
   methods: {
     async doRegister() {

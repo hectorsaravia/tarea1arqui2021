@@ -20,17 +20,17 @@
 
 export default {
   name: 'Login',
-   data() {
-    return {
-      nombreLogin: "",
-      passwordLogin: "",
-    };
-   },
-   beforeCreate () {
-    if (this.$session.exists()) {
-      this.$router.push({path: "/Dashboard"});
-    }
-  },
+    data() {
+      return {
+        nombreLogin: "",
+        passwordLogin: "",
+      };
+    },
+    beforeCreate () {
+      if (this.$session.exists()) {
+        this.$router.push({path: "/Dashboard"});
+      };
+    },
    methods: {
       async doLogin() {
         await this.$axios.post('http://localhost:8081/api/login',{
