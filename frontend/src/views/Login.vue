@@ -19,31 +19,31 @@
 <script>
 export default {
   name: 'Login',
-    data() {
-      return {
-        nombreLogin: "",
-        passwordLogin: "",
-      };
-    },
-    beforeCreate () {
+  data() {
+    return {
+      nombreLogin: "",
+      passwordLogin: "",
+    };
+  },
+  beforeCreate () {
       if (this.$session.exists()) {
         this.$router.push({path: "/Dashboard"});
       }
+  },
+  methods: {
+    async doLogin() {
+      await this.$axios.post('http://localhost:8081/api/login',{
+        name:this.nombreLogin,
+        password:this.passwordLogin
+      }).then(response => {
+        if(!response.data.message) {
+          alert("Credenciales incorrectas");
+        } else {
+          this.$session.start();
+          this.$router.push({path: "/Dashboard"});
+        }
+      }).catch(error => alert(error));
     },
-   methods: {
-      async doLogin() {
-        await this.$axios.post('http://localhost:8081/api/login',{
-          name:this.nombreLogin,
-          password:this.passwordLogin
-        }).then(response => {
-          if(!response.data.message) {
-            alert("Credenciales incorrectas");
-          } else {
-            this.$session.start();
-            this.$router.push({path: "/Dashboard"});
-          }
-        }).catch(error => alert(error));
-      },
-   },
+  },
 }
 </script>

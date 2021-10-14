@@ -89,8 +89,8 @@ router.post("/get_promedio_resenas", (req, res) => {
     });
 });
 
-//ruta para obtener todos los nombres de las resenas
-router.get("/get_nombre_comidas", (req, res) => {
+//ruta para obtener todos los valores de Comida
+router.get("/get_comidas", (req, res) => {
     get_nombre_comidas(function (result) {
         if (result.rowCount > 0) {
             res.json({message: result.rows});

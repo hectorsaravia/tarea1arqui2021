@@ -117,14 +117,14 @@ function get_promedio_resenas (data,result) {
     });
 };
 
-//funcion para obtener el nombre de todas las comidas de la base
+//funcion para obtener los valores todas las comidas de la base
 function get_nombre_comidas (result) {
     pool.connect(function(err, client, done) {
         if (err) {
             done();
             result(err);
         } else {
-            client.query(`SELECT nombre FROM Comida;`, function(err, results) {
+            client.query(`SELECT * FROM Comida;`, function(err, results) {
                 done();
                 if (err)
                     result(err);
