@@ -40,14 +40,17 @@ export default {
             name: this.nombreReg,
             password: this.passwordReg
           }).then(response => {
-            alert(response.data);
-            this.$router.push({path: 'Login'});
+            if(!response.data.message) {
+              alert("Usuario ya existe");
+            } else {
+              this.$router.push({path: "/"});
+            };
           }).catch(error => alert(error));
         } else {
-          alert('Contraseñas no coinciden');
+          alert("Contraseñas no coinciden");
         }
       } else {
-        alert('Debe escribir todos los campos');
+        alert("Debe escribir todos los campos");
       }
     },
   },

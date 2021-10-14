@@ -8,7 +8,7 @@
           <form class="form-group">
             <input v-model="nombreLogin" type="text" class="form-control" placeholder="Nombre" required>
             <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
-            <button type="button" class="btn btn-default" @click="doLogin()">Ingresar</button><br>
+            <button type="button" class="btn btn-danger" @click="doLogin()">Ingresar</button><br>
           </form>
         </div>
       </div>
@@ -36,8 +36,13 @@ export default {
         await this.$axios.post('http://localhost:8081/api/login',{
           name:this.nombreLogin,
           password:this.passwordLogin
-        }).then(response => alert(response.message))
-        .catch(error => alert(error));
+        }).then(response => {
+          if(!response.data.message) {
+            alert("Credenciales incorrectas");
+          } else {
+            this.$router.push({path: "/Dashboard"});
+          };
+        }).catch(error => alert(error));
       },
    },
 }
