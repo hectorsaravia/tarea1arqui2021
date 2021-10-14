@@ -1,35 +1,56 @@
 version: "3"
 
 services:
+  # se define el servicio de bases de datos
   database-postgres:
+
+    # se indica el nombre del contenedor
     container_name: database-postgres
+
+    # se usa una imagen publicada en docker hub
     image: postgres
+
+    #se declara el volumen que se utilizara
     volumes:
       - ./psqldata:/var/lib/postgres/data
-      # copy the sql script to create tables
+
+      # se copia sql script para create tables
       - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
 
+    # se declaran variables de ambiente iniciales y necesarias para usar la imagen
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
+
+    # se define los puertos y exposicion
     ports:
       - "5432:5432"
 
+  #se define el servicio de backend 
   backend:
+    # se indica el nombre del contenedor
     container_name: backend
+    # se especifica donde estan las variables de ambiente
     env_file: ./backend/.env
+    #se indica donde esta el dockerfile del backend
     build:
       dockerfile: Dockerfile
       context: ./backend
+    # se define los puertos y exposicion
     ports:
       - "8081:8081"
+    # se define la dependencia del servicio backend
     depends_on:
       - database-postgres
 
+  #se define el servicio de frontend 
   frontend:
+    # se indica el nombre del contenedor
     container_name: frontend
+    #se indica donde esta el dockerfile del frontend
     build:
       dockerfile: Dockerfile
       context: ./frontend
+    # se define los puertos y exposicion
     ports:
       - "8080:8080"
