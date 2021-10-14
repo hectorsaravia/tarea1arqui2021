@@ -104,6 +104,7 @@ router.get("/get_comidas", (req, res) => {
 
 //ruta para obtener todos los valores de Comida
 router.post("/get_comida_detalle", (req, res) => {
+    const data = req.body;
     get_comida_detalle(data, function (result) {
         if (result.rowCount > 0) {
             res.json({message: result.rows});
