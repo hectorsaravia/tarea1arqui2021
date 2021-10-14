@@ -5,7 +5,7 @@
       <router-link to="/Registro" class="btn btn-default">Registrarse</router-link>
     </div>
     <div id="navbar" v-else>
-      <router-link to="/logout"></router-link>
+      <button class="btn btn-default" @click="doLogoff()">Cerrar sesión</button>
     </div>
     <div id="app">
       <router-view></router-view>
@@ -13,7 +13,14 @@
   </div>
 </template>
 <script>
-export default {}
+export default {
+  methods: {
+    async doLogoff() {
+      this.$session.destroy();
+      this.$router.push({path: "/"});
+    }
+  }
+}
 </script>
 <style>
 #app {

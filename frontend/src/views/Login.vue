@@ -40,6 +40,7 @@ export default {
           if(!response.data.message) {
             alert("Credenciales incorrectas");
           } else {
+            this.$session.start();
             this.$router.push({path: "/Dashboard"});
           }
         }).catch(error => alert(error));
