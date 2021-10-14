@@ -27,7 +27,7 @@ export default {
                 if(!response.data.message) {
                   alert("La base de datos no contiene comidas");
                 } else {
-                  this.values=data.message
+                  this.values=response.data.message
                 }
               }).catch(error => alert(error));
             },
