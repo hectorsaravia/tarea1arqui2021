@@ -27,7 +27,7 @@ export default {
   },
   beforeCreate () {
       if (this.$session.exists()) {
-        this.$router.push({path: "/Dashboard"});
+        this.$router.push({path: "/dashboard"});
       }
   },
   methods: {
@@ -40,7 +40,7 @@ export default {
           alert("Credenciales incorrectas");
         } else {
           this.$session.start();
-          this.$router.push({path: "/Dashboard"});
+          this.$router.push({path: "/dashboard"});
         }
       }).catch(error => alert(error));
     },
