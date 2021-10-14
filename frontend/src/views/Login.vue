@@ -41,7 +41,7 @@ export default {
             alert("Credenciales incorrectas");
           } else {
             this.$router.push({path: "/Dashboard"});
-          };
+          }
         }).catch(error => alert(error));
       },
    },

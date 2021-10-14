@@ -44,7 +44,7 @@ export default {
               alert("Usuario ya existe");
             } else {
               this.$router.push({path: "/"});
-            };
+            }
           }).catch(error => alert(error));
         } else {
           alert("Contraseñas no coinciden");
