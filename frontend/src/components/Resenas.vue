@@ -12,13 +12,13 @@
 export default {
     name: 'Resenas',
     props: {
-        nombre_comida: String
+        nombre_comida: String,
+        votacion_res: String,
+        desc_res: String,
+        nombre_usuario: String
     },
     data() {
           return {
-            votacion_res: '',
-            desc_res: '',
-            nombre_usuario: ''
           };
         },
         methods: {

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Comidas v-for="c in values" v-bind:key="c" v-bind:nombre_comida="c.nombre_comida" >
-      <Resenas v-bind:nombre_comida="c.nombre_comida"/>
+    <Comidas v-for="c in values" v-bind:key="c" v-bind:nombre_comida="c.nombre" v-bind:desc_comida="c.descripcion" >
+      <Resenas v-bind:nombre_comida="c.nombre"/>
     </Comidas>
   </div>
 </template>
