@@ -101,3 +101,4 @@ dist
 .tern-port
 
 package-lock.json
+postgres-data/
