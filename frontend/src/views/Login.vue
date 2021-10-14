@@ -39,6 +39,7 @@ export default {
         if(!response.data.message) {
           alert("Credenciales incorrectas");
         } else {
+          localStorage.name = this.nombreLogin;
           this.$session.start();
           this.$router.push({path: "/dashboard"});
         }
