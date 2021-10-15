@@ -29,7 +29,7 @@ export default {
         },
         methods: {
           Modificar(){
-
+            this.$router.push({name: 'Modificar', params: {id: this.id}});
           },
           Eliminar(){
             this.$axios.delete('http://localhost:8081/api/delete_resena',{

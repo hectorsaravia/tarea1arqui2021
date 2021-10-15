@@ -59,7 +59,7 @@ export default {
               if(!response.data.message) {
                 alert("Credenciales incorrectas");
               } else {
-                this.$router.push({path: "/Dashboard"});
+                this.$router.push({path: "/dashboard"});
               }
             }).catch(error => alert(error));
           },

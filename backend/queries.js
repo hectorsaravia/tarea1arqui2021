@@ -98,6 +98,25 @@ function get_resenas (data,result) {
     });
 };
 
+//función para obtener una reseña de una comida exacta
+function get_resena_detalle (data,result) {
+    pool.connect(function(err, client, done) {
+        if (err) {
+            done();
+            result(err);
+        } else {
+            client.query(`SELECT * FROM Resenas WHERE id=$1;`, [data.id],
+            function(err, results) {
+                done();
+                if (err)
+                    result(err);
+                else
+                    result(results);
+            });
+        };
+    });
+};
+
 //función para obtener el promedio de todas las reseñas
 function get_promedio_resenas (data,result) {
     pool.connect(function(err, client, done) {
@@ -162,7 +181,7 @@ function new_comida (data,result) {
             done();
             result(err);
         } else {
-            client.query(`INSERT INTO Comida(nombre,descripcion,rutaImagen) VALUES($1,$2,$3);`,
+            client.query(`INSERT INTO Comida(nombre,descripcion,rutaImagen) VALUES($1,$2,$3)`,
             [data.nombre,data.descripcion,data.rutaImagen],
             function(err, results) {
                 done();
@@ -183,8 +202,8 @@ function update_resena(data,result) {
             done();
             result(err);
         } else {
-            client.query(`UPDATE Resenas SET votacion=$1 AND descripcion=$2 WHERE id=$3;`,
-            [data.id], function (err,results) {
+            client.query(`UPDATE Resenas SET votacion=$1,descripcion=$2 WHERE id=$3;`,
+            [data.votacion, data.descripcion, data.id], function (err,results) {
                 done();
                 if (err)
                     result(err);
@@ -259,6 +278,7 @@ module.exports = {
     register,
     new_resena,
     get_resenas,
+    get_resena_detalle,
     get_promedio_resenas,
     get_nombre_comidas,
     get_comida_detalle,
